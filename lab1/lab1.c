@@ -13,9 +13,10 @@ int main() {
 
   printf("Please enter a line of text: ");
   num_char = getline(&buff, &size, stdin);
-
+  //  num_char = -1;
   if (num_char == -1) {
-    // add error handling here
+    perror("getline failed");
+    exit(EXIT_FAILURE);
   }
 
   printf("User entered: %s", buff);
