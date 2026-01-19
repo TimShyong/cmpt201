@@ -11,21 +11,23 @@ int main() {
   char *token;
   char *saveptr;
 
-  printf("Please enter a line of text: ");
-  num_char = getline(&buff, &size, stdin);
-  //  num_char = -1;
-  if (num_char == -1) {
-    perror("getline failed");
-    exit(EXIT_FAILURE);
-  }
+  while (1) { // press CTRL + C to exist loop
+    printf("Please enter a line of text: ");
+    num_char = getline(&buff, &size, stdin);
+    //  num_char = -1;
+    if (num_char == -1) {
+      perror("getline failed");
+      exit(EXIT_FAILURE);
+    }
 
-  printf("User entered: %s", buff);
-  // printf("number of characters from getline() = %zd\n", num_char);
+    printf("User entered: %s", buff);
+    // printf("number of characters from getline() = %zd\n", num_char);
 
-  token = strtok_r(buff, sep, &saveptr);
-  while (token != NULL) {
-    printf("  %s\n", token);
-    token = strtok_r(NULL, sep, &saveptr);
+    token = strtok_r(buff, sep, &saveptr);
+    while (token != NULL) {
+      printf("  %s\n", token);
+      token = strtok_r(NULL, sep, &saveptr);
+    }
   }
 
   free(buff);
