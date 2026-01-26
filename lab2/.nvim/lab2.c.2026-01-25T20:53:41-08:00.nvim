@@ -23,11 +23,7 @@ int main() {
       exit(EXIT_FAILURE);
     }
 
-    //    printf("Debugging: [%s]\n", buff);
-    if (num_char > 0 && buff[num_char - 1] == '\n') {
-      buff[num_char - 1] = '\0';
-    }
-
+    printf("Debugging: [%s]\n", buff);
     pid_t pid = fork();
     if (pid < 0) {
       perror("getline failed");

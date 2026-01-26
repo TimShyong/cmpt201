@@ -23,10 +23,11 @@ int main() {
       exit(EXIT_FAILURE);
     }
 
-    //    printf("Debugging: [%s]\n", buff);
-    if (num_char > 0 && buff[num_char - 1] == '\n') {
-      buff[num_char - 1] = '\0';
+//    printf("Debugging: [%s]\n", buff);
+    if (nread > 0 && buff[nread -1] == '\n') {
+      buff[nread -1] = '\0';
     }
+
 
     pid_t pid = fork();
     if (pid < 0) {
