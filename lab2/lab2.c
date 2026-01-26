@@ -1,0 +1,41 @@
+#define _POSIX_C_SOURCE 200809L
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <unistd.h>
+
+int main() {
+  char *buff = NULL;
+  size_t size = 0;
+  ssize_t num_char;
+  // char *sep = " ";
+  // char *token;
+  // char *saveptr;
+
+  while (1) { // press CTRL + C to exist loop
+    printf("Please enter a line of text: ");
+    num_char = getline(&buff, &size, stdin);
+    //  num_char = -1;
+    if (num_char == -1) {
+      perror("getline failed");
+      exit(EXIT_FAILURE);
+    }
+
+    // printf("User entered: %s\n", buff);
+    pid_t pid = fork();
+    if (pid < 0) {
+      perror("getline failed");
+      exit(EXIT_FAILURE);
+    } else if (pid == 0) {
+      execl(buff, buff, (char *)NULL);
+      perror("execl() failed\n");
+      exit(1);
+    } else {
+      // parent process
+      int status;
+      waitpid(pid, &status, 0);
+    }
+  }
+}
