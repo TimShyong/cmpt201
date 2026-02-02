@@ -3,12 +3,12 @@
 #include <string.h>
 
 int print_history() {
-  printf("print workflow triggered!\n");
+  printf("print workflow triggered!");
   return 0;
 }
 
 int clear_history() {
-  printf("clear workflow triggered!\n");
+  printf("clear workflow triggered!");
   return 0;
 }
 
