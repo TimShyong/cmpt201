@@ -15,21 +15,6 @@ int clear_history() {
 }
 
 int update_history(char *history[], char *new_cmd, int *current, int *count) {
-  printf("update_history workflow triggered!");
-  // clean up string if there is allready one there
-  if (history[*current] != NULL) {
-    free(history[*current]);
-  }
-
-  // create a copy of the string and store THAT pointer (not the getline) in it
-  history[*current] = strdup(new_cmd);
-
-  // move "current" pointer forward in circular array and increment "count"
-  *current = (*current + 1) % 5;
-
-  if (*count < 5) {
-    (*count)++;
-  }
 
   return 0;
 }

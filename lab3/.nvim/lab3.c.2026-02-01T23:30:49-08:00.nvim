@@ -15,7 +15,6 @@ int clear_history() {
 }
 
 int update_history(char *history[], char *new_cmd, int *current, int *count) {
-  printf("update_history workflow triggered!");
   // clean up string if there is allready one there
   if (history[*current] != NULL) {
     free(history[*current]);
