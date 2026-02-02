@@ -27,6 +27,7 @@ int main() {
   int current = 0;
   int count = 0;
 
+
   // main loop
   while (1) {
     printf("Enter input: ");
