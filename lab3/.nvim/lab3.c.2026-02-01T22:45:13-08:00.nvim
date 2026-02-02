@@ -15,8 +15,8 @@ int main() {
       perror("getline failed");
       exit(EXIT_FAILURE);
     }
-    // printf("User entered: %s", buff);
-
+    //printf("User entered: %s", buff);
+  
     // Check if blank line
     if (strcmp(buff, "\n") == 0) {
       continue;
