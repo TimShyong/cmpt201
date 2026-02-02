@@ -23,19 +23,19 @@ int main() {
     }
 
     // Check for "clear "command
-    if (strcmp(buff, "clear\n") == 0) {
+    if (strcmp(buff, "clear") == 0 ) {
       printf("clear workflow triggered!\n");
       continue;
     }
 
     // Check for "print" command"
-    if (strcmp(buff, "print\n") == 0) {
+    if (strcmp(buff, "\n") == 0) {
       printf("print workflow triggered!\n");
       continue;
     }
-
+    
     // Add to history
-
+  
     printf("User entered: %s", buff);
   }
 
