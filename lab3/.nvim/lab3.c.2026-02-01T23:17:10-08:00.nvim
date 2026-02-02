@@ -14,10 +14,7 @@ int clear_history() {
   return 0;
 }
 
-int update_history(char *history[], char *new_cmd, int *current, int *count) {
-
-  return 0;
-}
+int update_history() { return 0; }
 
 int main() {
   // capture user input
@@ -26,8 +23,7 @@ int main() {
   ssize_t num_char;
 
   // store user input "history"
-  char *history[5] = {
-      NULL}; // stores POINTERS to strings, NOT the strings themmselves
+  char *history[5] = {NULL};  // stores POINTERS to strings, NOT the strings themmselves
   int current = 0;
   int count = 0;
 
@@ -60,8 +56,8 @@ int main() {
     }
 
     // Add to history
-    update_history(history, buff, current, count);
-    // printf("User entered: %s", buff);
+
+    printf("User entered: %s", buff);
   }
 
   return 0;
