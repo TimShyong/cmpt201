@@ -9,12 +9,11 @@ int print_history(char *history[], int current, int count) {
   int num_items = (count < 5) ? count : 5;
   int start_index = (count < 5) ? 0 : current;
 
-  for (int i = 0; i < num_items; i++) {
+  for (int i=0; i<num_items; i++) {
     int pos = (start_index + i) % 5;
 
     if (history[pos] != NULL) {
-      printf("%s", history[pos]);
-    }
+    printf("%s", history[pos]);
   }
   return 0;
 }
@@ -31,8 +30,7 @@ int update_history(char *history[], char *new_cmd, int *current, int *count) {
     free(history[*current]);
   }
 
-  // create a copy of the string and store THAT pointer (not the getline) in
-  // it
+  // create a copy of the string and store THAT pointer (not the getline) in it
   history[*current] = strdup(new_cmd);
 
   // move "current" pointer forward in circular array and increment "count"

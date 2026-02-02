@@ -1,0 +1,95 @@
+// Used the idea of a circular array to store the user input "history"
+// www.geeksforgeeks.org/dsa/circular-array
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int print_history(char *history[], int current, int count) {
+  // printf("print workflow triggered!\n");
+  int num_items = (count < 5) ? count : 5;
+  int start_index = (count < 5) ? 0 : current;
+
+  for (int i = 0; i < num_items; i++) {
+    int pos = (start_index + i) % 5;
+
+    if (history[pos] != NULL) {
+      printf("%s", history[pos]);
+    }
+  
+  }
+  return 0;
+}
+
+  int clear_history() {
+    printf("clear workflow triggered!\n");
+    return 0;
+  }
+
+  int update_history(char *history[], char *new_cmd, int *current, int *count) {
+    ///  printf("update_history workflow triggered!");
+    // clean up string if there is allready one there
+    if (history[*current] != NULL) {
+      free(history[*current]);
+    }
+
+    // create a copy of the string and store THAT pointer (not the getline) in
+    // it
+    history[*current] = strdup(new_cmd);
+
+    // move "current" pointer forward in circular array and increment "count"
+    *current = (*current + 1) % 5;
+
+    if (*count < 5) {
+      (*count)++;
+    }
+
+    return 0;
+  }
+
+  int main() {
+    // capture user input
+    char *buff = NULL;
+    size_t size = 0;
+    ssize_t num_char;
+
+    // store user input "history"
+    char *history[5] = {
+        NULL}; // stores POINTERS to strings, NOT the strings themmselves
+    int current = 0;
+    int count = 0;
+
+    // main loop
+    while (1) {
+      printf("Enter input: ");
+      num_char = getline(&buff, &size, stdin);
+
+      if (num_char == -1) {
+        perror("getline failed");
+        exit(EXIT_FAILURE);
+      }
+      // printf("User entered: %s", buff);
+
+      // Skip if blank line
+      if (strcmp(buff, "\n") == 0) {
+        continue;
+      }
+
+      // Check for "clear "command
+      if (strcmp(buff, "clear\n") == 0) {
+        clear_history();
+        continue;
+      }
+
+      // Check for "print" command"
+      if (strcmp(buff, "print\n") == 0) {
+        print_history(history, current, count);
+        continue;
+      }
+
+      // Add to history
+      update_history(history, buff, &current, &count);
+      // printf("User entered: %s", buff);
+    }
+
+    return 0;
+  }

@@ -5,17 +5,11 @@
 #include <string.h>
 
 int print_history(char *history[], int current, int count) {
-  // printf("print workflow triggered!\n");
+  //printf("print workflow triggered!\n");
   int num_items = (count < 5) ? count : 5;
-  int start_index = (count < 5) ? 0 : current;
+  int start_index = (count < 5> ? 0 : current;
 
-  for (int i = 0; i < num_items; i++) {
-    int pos = (start_index + i) % 5;
 
-    if (history[pos] != NULL) {
-      printf("%s", history[pos]);
-    }
-  }
   return 0;
 }
 
@@ -25,14 +19,13 @@ int clear_history() {
 }
 
 int update_history(char *history[], char *new_cmd, int *current, int *count) {
-  ///  printf("update_history workflow triggered!");
+///  printf("update_history workflow triggered!");
   // clean up string if there is allready one there
   if (history[*current] != NULL) {
     free(history[*current]);
   }
 
-  // create a copy of the string and store THAT pointer (not the getline) in
-  // it
+  // create a copy of the string and store THAT pointer (not the getline) in it
   history[*current] = strdup(new_cmd);
 
   // move "current" pointer forward in circular array and increment "count"
@@ -81,7 +74,7 @@ int main() {
 
     // Check for "print" command"
     if (strcmp(buff, "print\n") == 0) {
-      print_history(history, current, count);
+      print_history();
       continue;
     }
 
