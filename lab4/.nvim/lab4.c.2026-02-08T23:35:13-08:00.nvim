@@ -72,11 +72,7 @@ int main() {
   print_out("second block size: %lu\n\n", &block2->size, sizeof(uint64_t));
 
   print_out("first block next: %p\n", &block1->next, sizeof(void *));
-  print_out("second block next: %p\n\n", &block2->next, sizeof(void *));
-
-  for (size_t i = 0; i < (block1->size - sizeof(struct header)); i++) {
-    uint64_t bit = (uint64)dat
-    print_out("%lu\n", 
+  print_out("second block next: %p\n", &block2->next, sizeof(void *));
 
   return 0;
-  }
+}
