@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+struct header {
+  unit64_t size;
+  struct header *next;
+};
+
+void print_out(char *format, void *data, size_t data_size) {
+  char buf[BUF_SIZE];
+  ssize_t len = snprintf(buf, BUF_SIZE, format,
+                         data_size == sizeof(uint64_t) ? *(uint64_t *)data
+                                                       : *(void **)data);
+  if (len < 0) {
+    handle_error("snprintf");
+  }
+  write(STDOUT_FILENO, buf, len);
+}
+
+int main() {
+  //  increase_heap_size(EXTRA_SIZE);
+  //  initialize_block(first_block_pointer);
+  //  initialize_block(second_block_pointer);
+
+  //  print_out(...);
+  return 0;
+}
