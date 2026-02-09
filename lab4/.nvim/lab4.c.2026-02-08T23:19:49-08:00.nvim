@@ -60,7 +60,7 @@ int main() {
   //  int waldo = 42;
   //  print_out("Where is waldo? %p\n", &waldo, sizeof(&waldo));
 
-  struct header *block1 = (struct header *)start_of_heap;
+  struck header *block1 = (struct header *)start_of_heap;
 
   print_out("first block: %p\n", &block1, sizeof(void *));
   //  print_out(...);

@@ -37,6 +37,7 @@ void initialize_block(void *start_address, uint64_t size,
   size_t payload_size = size - sizeof(struct header);
 
   memset(payload_start, data, payload_size);
+
 };
 
 void print_out(char *format, void *data, size_t data_size) {
@@ -52,17 +53,12 @@ void print_out(char *format, void *data, size_t data_size) {
 }
 
 int main() {
-  void *start_of_heap = increase_heap_size((2 * BUF_SIZE));
-
-  initialize_block(start_of_heap, BUF_SIZE, NULL, 0);
+  //  increase_heap_size(EXTRA_SIZE);
+  //  initialize_block(first_block_pointer);
   //  initialize_block(second_block_pointer);
 
-  //  int waldo = 42;
-  //  print_out("Where is waldo? %p\n", &waldo, sizeof(&waldo));
-
-  struct header *block1 = (struct header *)start_of_heap;
-
-  print_out("first block: %p\n", &block1, sizeof(void *));
+  int waldo = 42;
+  print_out("Where is waldo? %p\n", &waldo, sizeof(&waldo));
   //  print_out(...);
   return 0;
 }

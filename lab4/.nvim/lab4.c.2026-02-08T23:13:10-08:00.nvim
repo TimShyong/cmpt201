@@ -53,16 +53,12 @@ void print_out(char *format, void *data, size_t data_size) {
 
 int main() {
   void *start_of_heap = increase_heap_size((2 * BUF_SIZE));
-
+  
   initialize_block(start_of_heap, BUF_SIZE, NULL, 0);
   //  initialize_block(second_block_pointer);
 
   //  int waldo = 42;
   //  print_out("Where is waldo? %p\n", &waldo, sizeof(&waldo));
-
-  struct header *block1 = (struct header *)start_of_heap;
-
-  print_out("first block: %p\n", &block1, sizeof(void *));
   //  print_out(...);
   return 0;
 }
