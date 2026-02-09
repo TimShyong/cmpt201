@@ -20,12 +20,12 @@ void *increase_heap_size(size_t size) {
   return new_addr;
 };
 
-void initialize_block(void *start_address, uint64_t size,
-                      struct header *next_ptr, int data) {
+void initialize_block(void *start_address, uint64_t size, struct header *next_ptr, int data) {
   struct header *my_header = (struct header *)start_address;
 
   my_header->size = size;
   my_header->next = next_ptr;
+
 };
 
 void print_out(char *format, void *data, size_t data_size) {

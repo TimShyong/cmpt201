@@ -10,7 +10,7 @@ struct header {
   struct header *next;
 };
 
-void *increase_heap_size(size_t size) {
+void* increase_heap_size(size_t size) {
   void *new_addr = sbrk(size);
 
   if (new_addr == (void *)-1) {
@@ -20,12 +20,8 @@ void *increase_heap_size(size_t size) {
   return new_addr;
 };
 
-void initialize_block(void *start_address, uint64_t size,
-                      struct header *next_ptr, int data) {
-  struct header *my_header = (struct header *)start_address;
-
-  my_header->size = size;
-  my_header->next = next_ptr;
+void initialize_block(void *start_address, uint64_t size, struct header *next_ptr, int data) {
+  // add code here
 };
 
 void print_out(char *format, void *data, size_t data_size) {
